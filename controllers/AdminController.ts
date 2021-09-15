@@ -5,7 +5,7 @@ import { GeneratedPassword, GenerateSalt } from '../utility';
 
 export const CreateVandor = async (req: Request, res: Response, next: NextFunction) => {
 
-    const {name, address, pincode, foodType, email, password, ownerName, phone} = <CreateVandorInput>req.body
+    const {name, address, pincode, foodType, email, password, ownerName, phone} = <CreateVandorInput>req.body;
 
     // If vandor exists, dont create
     const existingVandor = await Vandor.findOne({email: email})
@@ -18,15 +18,15 @@ export const CreateVandor = async (req: Request, res: Response, next: NextFuncti
     const userPassword = await GeneratedPassword(password, salt)
 
 
-    const createdVandor = Vandor.create({
+    const createdVandor = await Vandor.create({
         name: name,
         address: address,
         pincode: pincode,
         foodType: foodType,
         email: email,
         password: userPassword,
+        ownerName: ownerName,
         salt: salt,
-        ownername: ownerName,
         phone: phone,
         rating: 0,
         serviceAvialable: false,

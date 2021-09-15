@@ -2,8 +2,8 @@ import mongoose, {Schema, Document, Model} from 'mongoose';
 
 interface VandorDoc extends Document {
     name: string;
-    ownerName: [string];
-    foodType: string;
+    ownerName: string;
+    foodType: [string];
     pincode: string;
     address: string;
     phone: string;
@@ -17,19 +17,18 @@ interface VandorDoc extends Document {
 }
 
 const VandorSchema = new Schema({
-
     name: {type: String, required: true},
     ownerName: {type: String, required: true},
-    foodType: {type: [String], required: true},
+    foodType: {type: [String]},
     pincode: {type: String, required: true},
-    address: {type: String, required: true},
+    address: {type: String},
     phone: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
     salt: {type: String, required: true},
-    serviceAvailable: {type: String, required: true},
-    coverImages: {type: [String], required: true},
-    rating: {type: Number, required: true},
+    serviceAvailable: {type: String},
+    coverImages: {type: [String]},
+    rating: {type: Number},
     // foods: 
     // [
     //     {
@@ -44,6 +43,7 @@ const VandorSchema = new Schema({
             delete ret.salt;
             delete ret.__v;
             delete ret.updatedAt;
+            delete ret.createdAt;
         }
     },
     timestamps: true

@@ -12,7 +12,7 @@ mongoose.connect(MONGO_URI, {
     // useUnifiedTopology: true,
     // useCreateIndex: true
 }).then(result => {
-    console.log("Connected to database: ", result)
+    console.log("Connected to database")
 }).catch(err => console.log("Error connecting to database: ",err))
 
 
