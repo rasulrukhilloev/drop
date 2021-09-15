@@ -1,2 +1,2 @@
 # drop
-Drop is backend of online delivery platform
+Drop is backend of the online food delivery platform
